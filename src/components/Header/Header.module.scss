@@ -1,0 +1,72 @@
+.header {
+  border-bottom: 1px solid #f6f6f6;
+  padding: 40px 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &Logo {
+    display: flex;
+
+    img {
+      margin-right: 15px;
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      letter-spacing: 1%;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    p {
+      color: #7b7b7b;
+    }
+  }
+}
+
+.buttonCart {
+    display: flex;
+    align-items: center;
+    line-height: 23px;
+    padding: 12px 25px;
+    background-color: #fe5f1e;
+    border-radius: 30px;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: darken(#fe5f1e, 8%);
+    }
+
+    &:active {
+      transform: translateY(1px);
+      background-color: darken(#fe5f1e, 12%);
+    }
+
+    svg {
+      margin-right: 8px;
+      margin-bottom: 1px;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      color: #fff;
+    }
+}
+
+.delimiter {
+    width: 1px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin-left: 14px;
+    margin-right: 14px;
+}
