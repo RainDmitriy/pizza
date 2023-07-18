@@ -1,21 +1,28 @@
 import React from 'react';
 import style from './Header.module.scss';
 import "../../scss/app.scss";
+import {Link} from "react-router-dom";
+import {AppContext} from "../../context";
 
 function Header() {
+
+  const {cartItems, totalPrice} = React.useContext(AppContext);
+
   return (
     <div className={style.header}>
           <div className={style.container}>
-            <div className={style.headerLogo}>
-              <img width="38" src="./img/pizza-logo.svg" alt="Pizza logo" />
-              <div>
-                <h1>React Pizza</h1>
-                <p>самая вкусная пицца во вселенной</p>
+            <Link to="/">
+              <div className={style.headerLogo}>
+                <img width="38" src="./img/pizza-logo.svg" alt="Pizza logo" />
+                <div>
+                  <h1>React Pizza</h1>
+                  <p>самая вкусная пицца во вселенной</p>
+                </div>
               </div>
-            </div>
-            <div>
-              <a href="/cart.html" className={style.buttonCart}>
-                <span>520 ₽</span>
+            </Link>
+            <Link to="/cart">
+              <div className={style.buttonCart}>
+                <span>{totalPrice} ₽</span>
                 <div className={style.delimiter}></div>
                 <svg
                   width="18"
@@ -46,9 +53,9 @@ function Header() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <span>3</span>
-              </a>
-            </div>
+                <span>{cartItems.length}</span>
+              </div>
+            </Link>
           </div>
     </div>
   )

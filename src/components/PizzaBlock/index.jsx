@@ -1,18 +1,42 @@
 import React from 'react';
 import style from './PizzaBlock.module.scss';
+import axios from 'axios';
 
-function PizzaBlock({title, price, types, sizes, image}) {
+function PizzaBlock({title, price, types, sizes, image, cartItems, setCartItems}) {
 
   const [selectedType, setSelectedType] = React.useState(0);
   const [selectedSize, setSelectedSize] = React.useState(0);
+  const [inCart, setInCart] = React.useState(cartItems.filter((item) => item.selectedType === selectedType && item.selectedSize === selectedSize && item.title === title));
+
+  const onClickAdd = async () => {
+    try {
+      if (inCart.length > 0) {
+        const {data} = await axios.put(`http://localhost:5000/cart/${inCart[0].id}`, {
+          title, price, image, selectedType, selectedSize, quantity: inCart[0].quantity + 1
+        })
+        setCartItems((prev) => [...prev.filter((item) => item.id !== data.id), data]);
+      } else {
+        const {data} = await axios.post(`http://localhost:5000/cart`, {
+          title, price, image, selectedType, selectedSize, quantity: 1
+        })
+        setCartItems((prev) => [...prev, data]);
+      }
+    } catch (e) {
+      console.log("Не удалось добавить в корзину");
+    }
+  }
 
   const typeTranslate = ['тонкое', 'традиционное'];
+
+  React.useEffect(() => {
+    setInCart(cartItems.filter((item) => item.selectedType === selectedType && item.selectedSize === selectedSize && item.title === title));
+  }, [selectedType, selectedSize, cartItems]);
 
   return (
     <div className={style.pizzaBlock}>
     <img
       className={style.pizzaBlockImage}
-      src={image}
+      src={image[selectedType]}
       alt="Pizza"
     />
 
@@ -40,7 +64,7 @@ function PizzaBlock({title, price, types, sizes, image}) {
   </div>
   <div className={style.pizzaBlockBottom}>
     <div className={style.pizzaBlockPrice}>{price[selectedSize]} ₽</div>
-    <div className="button button--outline button--add">
+    <div className="button button--outline button--add" onClick={() => onClickAdd()}>
       <svg
         width="12"
         height="12"
@@ -54,7 +78,7 @@ function PizzaBlock({title, price, types, sizes, image}) {
         />
       </svg>
       <span>Добавить</span>
-      <i>2</i>
+      {inCart.length > 0 ? <i>{inCart[0].quantity}</i> : ""}
     </div>
   </div>
 </div>

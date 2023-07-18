@@ -1,16 +1,13 @@
 import React from 'react';
 import style from './Categories.module.scss';
 
-function Categories() {
-
-  const [activeIndex, setActiveIndex] = React.useState(0);
+function Categories({activeIndex, setActiveIndex}) {
   const categories = [
     'Все',
     'Мясные',
     'Вегетарианская',
     'Гриль',
-    'Острые',
-    'Закрытые'
+    'Острые'
   ];
 
   return (

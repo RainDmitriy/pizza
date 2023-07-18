@@ -1,148 +1,595 @@
 {
-  "items" : [
-      {
-        "id": 1,
-        "title": "Чизбургер пицца",
-        "types": [0, 1],
-        "price": [419, 629, 749],
-        "rating": 4,
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 2,
-        "title": "Пицца Жюльен",
-        "types": [0, 1],
-        "price": [469, 719, 799],
-        "rating": 5,
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/e482d5c7b107456783a0e0100952d05f_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 3,
-        "title": "Пицца от шефа",
-        "types": [0, 1],
-        "price": [639, 959, 1099],
-        "rating": 6,
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/d7bbbc4c74af442e8b9b3ea2faf3c941_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 4,
-        "title": "Сырная",
-        "types": [0, 1],
-        "rating": 4,
-        "price": [289, 479, 609],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/d9c609f1422247f2b87b6293eb461ff0_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 5,
-        "title": "Пепперони фреш",
-        "types": [0, 1],
-        "rating": 7,
-        "price": [289, 479, 609],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/27c9bbd0af3a4d1d84a086d9c2f1656d_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 6,
-        "title": "Двойной цыплёнок",
-        "types": [0, 1],
-        "rating": 6,
-        "price": [369, 529, 689],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 7,
-        "title": "Чоризо фреш",
-        "types": [0, 1],
-        "rating": 5,
-        "price": [289, 479, 609],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/02ca2561953b488993878d1f70e359de_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 8,
-        "title": "Ветчина и сыр",
-        "types": [0, 1],
-        "rating": 4,
-        "price": [369, 529, 689],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/cea570842b754c52b786c231c65bd2e2_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 9,
-        "title": "Микс",
-        "types": [0, 1],
-        "rating": 3,
-        "price": [519, 819, 949],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/3deea5573fc64c28a64ff83477f55eed_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 10,
-        "title": "Карбонара",
-        "types": [0, 1],
-        "rating": 9,
-        "price": [469, 719, 799],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/9f54fa5d2d204f5fa70579e2e1982d03_584x584.jpeg",
-        "sizes": [26, 30, 36]
-      },
-      {
-        "id": 11,
-        "title": "Мясной микс с пастрами из говядины",
-        "types": [0, 1],
-        "rating": 8,
-        "price": [519, 819, 949],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 12,
-        "title": "Сырный цыплёнок",
-        "types": [0, 1],
-        "rating": 7,
-        "price": [469, 719, 799],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/42360a7dcb7640c998b723231586fe84_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 13,
-        "title": "Песто",
-        "types": [0, 1],
-        "rating": 6,
-        "price": [469, 719, 799],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/ba58ba9c2a3a4dbda7eb618882d7128d_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 14,
-        "title": "Мясная",
-        "types": [0, 1],
-        "rating": 5,
-        "price": [469, 719, 799],
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 15,
-        "title": "Гавайская",
-        "types": [0, 1],
-        "price": [419, 629, 749],
-        "rating": 1,
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/c24bb8e55baa4ca68945459ac6afdf3e_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      },
-      {
-        "id": 16,
-        "title": "Цыплёнок карри",
-        "types": [0, 1],
-        "price": [419, 629, 749],
-        "rating": 9,
-        "image": "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg",
-        "sizes": [25, 30, 35]
-      }
+  "items": [
+    {
+      "id": 1,
+      "title": "Чизбургер пицца",
+      "types": [
+        0,
+        1
+      ],
+      "price": [
+        419,
+        629,
+        749
+      ],
+      "rating": 4,
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/8411159aa0764daca235e7eb6abc7870_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": false,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Пицца Жюльен",
+      "types": [
+        0,
+        1
+      ],
+      "price": [
+        469,
+        719,
+        799
+      ],
+      "rating": 5,
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/02a38899560844c4ba8530ee39b0cbeb_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/e482d5c7b107456783a0e0100952d05f_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Пицца от шефа",
+      "types": [
+        0,
+        1
+      ],
+      "price": [
+        639,
+        959,
+        1099
+      ],
+      "rating": 6,
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/12619b591aa24676857a64e6e46d36bc_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/d7bbbc4c74af442e8b9b3ea2faf3c941_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Сырная",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 4,
+      "price": [
+        289,
+        479,
+        609
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/05eee37cf0074207992acad0b5ebb3fb_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/d9c609f1422247f2b87b6293eb461ff0_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": false,
+          "vegetarian": true,
+          "grilled": false,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Пепперони фреш",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 7,
+      "price": [
+        289,
+        479,
+        609
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/5cc95da360d9483dbaa9b550731b5016_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/27c9bbd0af3a4d1d84a086d9c2f1656d_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": false,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Двойной цыплёнок",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 6,
+      "price": [
+        369,
+        529,
+        689
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ca07c827444f4b6d9eb3eedf36e256a2_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Чоризо фреш",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 5,
+      "price": [
+        289,
+        479,
+        609
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/a580002d22234da59c56a3e898f7b285_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/02ca2561953b488993878d1f70e359de_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": true,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": false,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Ветчина и сыр",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 4,
+      "price": [
+        369,
+        529,
+        689
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/f1380af5e4a34b22b8b692db69ec52c4_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/cea570842b754c52b786c231c65bd2e2_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": false,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Микс",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 3,
+      "price": [
+        519,
+        819,
+        949
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/46fee087bc464d1f89f126a4a3eaddda_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/3deea5573fc64c28a64ff83477f55eed_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Карбонара",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 9,
+      "price": [
+        469,
+        719,
+        799
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/c5e5a95aec334241ae326988823dab49_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/9f54fa5d2d204f5fa70579e2e1982d03_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": false,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Мясной микс с пастрами из говядины",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 8,
+      "price": [
+        519,
+        819,
+        949
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/bff40a96e24f42a3919806921d3b5450_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": true,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Сырный цыплёнок",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 7,
+      "price": [
+        469,
+        719,
+        799
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/69253f71abf543dd8ae6ef42b680ceb0_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/42360a7dcb7640c998b723231586fe84_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Песто",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 6,
+      "price": [
+        469,
+        719,
+        799
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/48053c779d254c418555063071b1d1ad_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ba58ba9c2a3a4dbda7eb618882d7128d_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Мясная",
+      "types": [
+        0,
+        1
+      ],
+      "rating": 5,
+      "price": [
+        469,
+        719,
+        799
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/7c0a41c7daa0405e8fce0ed652762fad_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": true,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Гавайская",
+      "types": [
+        0,
+        1
+      ],
+      "price": [
+        419,
+        629,
+        749
+      ],
+      "rating": 1,
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/358030fbfa134df0b62cab8467c872ea_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/c24bb8e55baa4ca68945459ac6afdf3e_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Цыплёнок карри",
+      "types": [
+        0,
+        1
+      ],
+      "price": [
+        419,
+        629,
+        749
+      ],
+      "rating": 9,
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
+      ],
+      "sizes": [
+        25,
+        30,
+        35
+      ],
+      "props": [
+        {
+          "spicy": false,
+          "meat": true,
+          "vegetarian": false,
+          "grilled": true,
+          "closed": false
+        }
+      ]
+    }
+  ],
+  "cart": [],
+  "orders": [
+    {
+      "cartItems": [
+        {
+          "title": "Мясной микс с пастрами из говядины",
+          "price": [
+            519,
+            819,
+            949
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/bff40a96e24f42a3919806921d3b5450_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg"
+          ],
+          "selectedType": 1,
+          "selectedSize": 0,
+          "quantity": 6,
+          "id": 2
+        },
+        {
+          "title": "Мясной микс с пастрами из говядины",
+          "price": [
+            519,
+            819,
+            949
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/bff40a96e24f42a3919806921d3b5450_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg"
+          ],
+          "selectedType": 0,
+          "selectedSize": 0,
+          "quantity": 4,
+          "id": 3
+        }
+      ],
+      "totalPrice": 5190,
+      "id": 1
+    },
+    {
+      "cartItems": [
+        {
+          "title": "Цыплёнок карри",
+          "price": [
+            419,
+            629,
+            749
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
+          ],
+          "selectedType": 0,
+          "selectedSize": 0,
+          "quantity": 7,
+          "id": 1
+        },
+        {
+          "quantity": 8,
+          "selectedSize": 2,
+          "selectedType": 0,
+          "title": "Цыплёнок карри",
+          "price": [
+            419,
+            629,
+            749
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
+          ],
+          "id": 2
+        }
+      ],
+      "totalPrice": 8925,
+      "id": 2
+    }
   ]
 }
