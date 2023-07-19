@@ -12,7 +12,7 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
   const onClickMinus = async () => {
     try {
       if (quantity > 1) {
-        const {data} = await axios.put(`http://localhost:5000/cart/${id}`, {
+        axios.put(`http://localhost:5000/cart/${id}`, {
           quantity: quantity - 1,
           selectedSize,
           selectedType,
@@ -20,16 +20,24 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
           price,
           image
         });
-      setCartItems((prev) => [...prev.filter((item) => item.id !== data.id), data])
+      setCartItems((prev) => [...prev.filter((item) => item.id !== id), {
+        quantity: quantity - 1,
+        selectedSize,
+        selectedType,
+        title,
+        price,
+        image,
+        id
+      }])
       }
     } catch (e) {
       console.log("Не удалось уменьшить количество");
     }
   }
 
-  const onClickPlus = async () => {
+  const onClickPlus = () => {
     try {
-      const {data} = await axios.put(`http://localhost:5000/cart/${id}`, {
+      axios.put(`http://localhost:5000/cart/${id}`, {
         quantity: quantity + 1,
         selectedSize,
         selectedType,
@@ -37,15 +45,23 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
         price,
         image
       });
-      setCartItems((prev) => [...prev.filter((item) => item.id !== data.id), data])
+      setCartItems((prev) => [...prev.filter((item) => item.id !== id), {
+        quantity: quantity + 1,
+        selectedSize,
+        selectedType,
+        title,
+        price,
+        image,
+        id
+      }])
     } catch (e) {
       console.log("Не удалось уменьшить количество");
     }
   }
 
-  const onClickRemove = async () => {
+  const onClickRemove = () => {
     try {
-      await axios.delete(`http://localhost:5000/cart/${id}`);
+      axios.delete(`http://localhost:5000/cart/${id}`);
       setCartItems(cartItems.filter((item) => item.id !== id));
     } catch (e) {
       console.log("Не удалось удалить пиццу из корзины");

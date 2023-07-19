@@ -8,6 +8,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 700px) {
+      flex-wrap: wrap;
+    }
   }
 
   &Logo {
@@ -63,6 +67,11 @@
       font-size: 16px;
       color: #fff;
     }
+
+    @media (max-width: 700px) {
+      margin-top: 20px;
+    }
+
 }
 
 .delimiter {
