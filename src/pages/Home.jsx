@@ -5,13 +5,13 @@ import { AppContext } from '../context';
 import Sort from '../components/Sort';
 import Categories from '../components/Categories';
 import ContentLoader from 'react-content-loader';
+import { useSelector } from "react-redux";
 
 function Home() {
 
   const {isLoaded, pizza, cartItems, setCartItems} = React.useContext(AppContext);
 
-  const [sortProps, setSortProps] = React.useState(0);
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const { sortType, filterType } = useSelector((state) => state.filter);
 
   const sorted = (pizzas, sortType) => {
     switch (sortType) {
@@ -49,13 +49,13 @@ function Home() {
       <div className="content">
         <div className="container">
           <div className="content__top">
-            <Categories activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
-            <Sort setSortProps={setSortProps} sortProps={sortProps} />
+            <Categories />
+            <Sort />
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
             { isLoaded ? 
-              sorted(filtered(pizza, activeIndex), sortProps).map((item) => 
+              sorted(filtered(pizza, filterType), sortType).map((item) => 
                 <PizzaBlock 
                 key={item.id}
                 cartItems={cartItems}

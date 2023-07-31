@@ -513,6 +513,55 @@
       ]
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "title": "Двойной цыплёнок",
+      "price": [
+        369,
+        529,
+        689
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ca07c827444f4b6d9eb3eedf36e256a2_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg"
+      ],
+      "selectedType": 0,
+      "selectedSize": 0,
+      "quantity": 4,
+      "id": 1
+    },
+    {
+      "title": "Двойной цыплёнок",
+      "price": [
+        369,
+        529,
+        689
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ca07c827444f4b6d9eb3eedf36e256a2_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg"
+      ],
+      "selectedType": 0,
+      "selectedSize": 2,
+      "quantity": 4,
+      "id": 2
+    },
+    {
+      "title": "Двойной цыплёнок",
+      "price": [
+        369,
+        529,
+        689
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ca07c827444f4b6d9eb3eedf36e256a2_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg"
+      ],
+      "selectedType": 0,
+      "selectedSize": 1,
+      "quantity": 4,
+      "id": 3
+    }
+  ],
   "orders": []
 }

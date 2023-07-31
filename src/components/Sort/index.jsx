@@ -1,14 +1,18 @@
 import React from 'react';
 import style from './Sort.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeSortType, sortToggle } from '../../redux/slices/filterSlice';
 
-function Sort({setSortProps, sortProps}) {
+function Sort() {
 
-  const [isSortActive, setIsSortActive] = React.useState(false);
-  const sortPropsTranslation = {
-    0: "популярности",
-    1: "цене",
-    2: "алфавиту"
-  }
+  const { isSortActive, sortType } = useSelector(state => state.filter)
+  const dispatch = useDispatch();
+
+  const sortTypeTranslation = [ 
+    "популярности",
+    "цене",
+    "алфавиту"
+  ];
 
   return (
     <div className={style.sort}>
@@ -27,13 +31,13 @@ function Sort({setSortProps, sortProps}) {
                   />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setIsSortActive(!isSortActive)}>{sortPropsTranslation[sortProps]}</span>
+                <span onClick={() => dispatch(sortToggle())}>{sortTypeTranslation[sortType]}</span>
               </div>
               {isSortActive && <div className={style.sortPopup}>
                 <ul>
-                  <li className={sortProps === 0 ? style.active : ""} onClick={() => {setSortProps(0); setIsSortActive(false)}}>популярности (сначала популярные)</li>
-                  <li className={sortProps === 1 ? style.active : ""} onClick={() => {setSortProps(1); setIsSortActive(false)}}>цене (сначала дешёвые)</li>
-                  <li className={sortProps === 2 ? style.active : ""} onClick={() => {setSortProps(2); setIsSortActive(false)}}>алфавиту (А-Я)</li>
+                  <li className={sortType === 0 ? style.active : ""} onClick={() => {dispatch(changeSortType(0)); dispatch(sortToggle())}}>популярности (сначала популярные)</li>
+                  <li className={sortType === 1 ? style.active : ""} onClick={() => {dispatch(changeSortType(1)); dispatch(sortToggle())}}>цене (сначала дешёвые)</li>
+                  <li className={sortType === 2 ? style.active : ""} onClick={() => {dispatch(changeSortType(2)); dispatch(sortToggle())}}>алфавиту (А-Я)</li>
                 </ul>
               </div>}
     </div>
