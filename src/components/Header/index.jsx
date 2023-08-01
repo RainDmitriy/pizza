@@ -2,11 +2,11 @@ import React from 'react';
 import style from './Header.module.scss';
 import "../../scss/app.scss";
 import {Link} from "react-router-dom";
-import {AppContext} from "../../context";
+import {useSelector} from "react-redux";
 
 function Header() {
 
-  const {cartItems, totalPrice} = React.useContext(AppContext);
+  const {cartItems, totalPrice} = useSelector(state => state.cart);
 
   return (
     <div className={style.header}>

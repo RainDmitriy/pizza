@@ -1,13 +1,15 @@
 import React from 'react';
-import { AppContext } from '../context';
 import Header from '../components/Header';
 import CartItem from '../components/CartItem';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateCartItems } from '../redux/slices/cartSlice';
 
 function Cart() {
   
-  const {cartItems, setCartItems, totalPrice} = React.useContext(AppContext);
+  const dispatch = useDispatch();
+  const {cartItems, totalPrice} = useSelector(state => state.cart);
 
   const clearCart = async () => {
     try {
@@ -15,7 +17,7 @@ function Cart() {
       await items.forEach(item => {
         axios.delete(`http://localhost:5000/cart/${item.id}`)
       });
-      setCartItems([]);
+      dispatch(updateCartItems([]));
     } catch (e) {
       console.log("Не удалось очистить корзину");
     }
@@ -28,6 +30,11 @@ function Cart() {
     } catch (e) {
       console.log("Не удалось создать заказ");
     }
+  }
+
+  const displayCart = (items) => {
+    let itemsList = [...items];
+    return itemsList.sort((a,b) => a.id - b.id);
   }
 
   return (
@@ -56,7 +63,7 @@ function Cart() {
               </div>
             </div>
             <div className="content__item">
-              {cartItems.sort((a,b) => a.id - b.id).map((item) => 
+              {displayCart(cartItems).map((item) => 
                 <CartItem 
                   key={item.id}
                   id={item.id}

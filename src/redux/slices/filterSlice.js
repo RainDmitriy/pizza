@@ -2,8 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   sortType: 0,
-  filterType: 0,
-  isSortActive: false
+  filterType: 0
 }
 
 export const filterSlice = createSlice({
@@ -16,13 +15,9 @@ export const filterSlice = createSlice({
     changeFilterType: (state, action) => {
       state.filterType = action.payload;
     },
-
-    sortToggle: (state) => {
-      state.isSortActive = !state.isSortActive;
-    }
   }
 })
 
-export const { changeSortType, changeFilterType, sortToggle } = filterSlice.actions;
+export const { changeSortType, changeFilterType } = filterSlice.actions;
 
 export default filterSlice.reducer;

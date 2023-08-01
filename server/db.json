@@ -515,53 +515,76 @@
   ],
   "cart": [
     {
-      "title": "Двойной цыплёнок",
+      "quantity": 17,
+      "selectedSize": 0,
+      "selectedType": 0,
+      "title": "Цыплёнок карри",
       "price": [
-        369,
-        529,
-        689
+        419,
+        629,
+        749
       ],
       "image": [
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/ca07c827444f4b6d9eb3eedf36e256a2_584x584.jpeg",
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg"
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
       ],
-      "selectedType": 0,
-      "selectedSize": 0,
-      "quantity": 4,
       "id": 1
     },
     {
-      "title": "Двойной цыплёнок",
+      "title": "Цыплёнок карри",
       "price": [
-        369,
-        529,
-        689
+        419,
+        629,
+        749
       ],
       "image": [
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/ca07c827444f4b6d9eb3eedf36e256a2_584x584.jpeg",
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg"
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
       ],
       "selectedType": 0,
       "selectedSize": 2,
-      "quantity": 4,
+      "quantity": 11,
       "id": 2
-    },
-    {
-      "title": "Двойной цыплёнок",
-      "price": [
-        369,
-        529,
-        689
-      ],
-      "image": [
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/ca07c827444f4b6d9eb3eedf36e256a2_584x584.jpeg",
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_584x584.jpeg"
-      ],
-      "selectedType": 0,
-      "selectedSize": 1,
-      "quantity": 4,
-      "id": 3
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "cartItems": [
+        {
+          "quantity": 16,
+          "selectedSize": 0,
+          "selectedType": 0,
+          "title": "Карбонара",
+          "price": [
+            469,
+            719,
+            799
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c5e5a95aec334241ae326988823dab49_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/9f54fa5d2d204f5fa70579e2e1982d03_584x584.jpeg"
+          ],
+          "id": 1
+        },
+        {
+          "quantity": 26,
+          "selectedSize": 2,
+          "selectedType": 0,
+          "title": "Карбонара",
+          "price": [
+            469,
+            719,
+            799
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c5e5a95aec334241ae326988823dab49_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/9f54fa5d2d204f5fa70579e2e1982d03_584x584.jpeg"
+          ],
+          "id": 2
+        }
+      ],
+      "totalPrice": 28278,
+      "id": 1
+    }
+  ]
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
 import PizzaBlock from '../components/PizzaBlock';
-import { AppContext } from '../context';
 import Sort from '../components/Sort';
 import Categories from '../components/Categories';
 import ContentLoader from 'react-content-loader';
@@ -9,25 +8,25 @@ import { useSelector } from "react-redux";
 
 function Home() {
 
-  const {isLoaded, pizza, cartItems, setCartItems} = React.useContext(AppContext);
-
   const { sortType, filterType } = useSelector((state) => state.filter);
+  const { items, isLoaded } = useSelector((state) => state.items);
 
   const sorted = (pizzas, sortType) => {
+    let pizzasCopy = [...pizzas];
     switch (sortType) {
       case 0:
-        return pizzas.sort((a, b) => b.rating - a.rating);
+        return pizzasCopy.sort((a, b) => b.rating - a.rating);
       case 1:
-        return pizzas.sort((a, b) => a.price[0] - b.price[0]);
+        return pizzasCopy.sort((a, b) => a.price[0] - b.price[0]);
       case 2:
-        return pizzas.sort((a, b) => a.title.localeCompare(b.title));
+        return pizzasCopy.sort((a, b) => a.title.localeCompare(b.title));
       default:
-        return pizzas;
+        return pizzasCopy;
     }
   }
 
-  const filtered = (pizzas, filter) => {
-    switch (filter) {
+  const filtered = (pizzas, filterType) => {
+    switch (filterType) {
       case 0:
         return pizzas;
       case 1:
@@ -55,11 +54,9 @@ function Home() {
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
             { isLoaded ? 
-              sorted(filtered(pizza, filterType), sortType).map((item) => 
+              sorted(filtered(items, filterType), sortType).map((item) => 
                 <PizzaBlock 
                 key={item.id}
-                cartItems={cartItems}
-                setCartItems={setCartItems}
                 {...item}/>
               ) : [...Array(16)].map((obj) =>
                 <ContentLoader 

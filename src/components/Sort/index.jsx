@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Sort.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeSortType, sortToggle } from '../../redux/slices/filterSlice';
+import { changeSortType } from '../../redux/slices/filterSlice';
 
 function Sort() {
 
-  const { isSortActive, sortType } = useSelector(state => state.filter)
+  const { sortType } = useSelector(state => state.filter)
   const dispatch = useDispatch();
+
+  const [ isSortActive, setIsSortActive ] = useState(false);
 
   const sortTypeTranslation = [ 
     "популярности",
@@ -31,13 +33,13 @@ function Sort() {
                   />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => dispatch(sortToggle())}>{sortTypeTranslation[sortType]}</span>
+                <span onClick={() => setIsSortActive(!isSortActive)}>{sortTypeTranslation[sortType]}</span>
               </div>
               {isSortActive && <div className={style.sortPopup}>
                 <ul>
-                  <li className={sortType === 0 ? style.active : ""} onClick={() => {dispatch(changeSortType(0)); dispatch(sortToggle())}}>популярности (сначала популярные)</li>
-                  <li className={sortType === 1 ? style.active : ""} onClick={() => {dispatch(changeSortType(1)); dispatch(sortToggle())}}>цене (сначала дешёвые)</li>
-                  <li className={sortType === 2 ? style.active : ""} onClick={() => {dispatch(changeSortType(2)); dispatch(sortToggle())}}>алфавиту (А-Я)</li>
+                  <li className={sortType === 0 ? style.active : ""} onClick={() => {dispatch(changeSortType(0)); setIsSortActive(false)}}>популярности (сначала популярные)</li>
+                  <li className={sortType === 1 ? style.active : ""} onClick={() => {dispatch(changeSortType(1)); setIsSortActive(false)}}>цене (сначала дешёвые)</li>
+                  <li className={sortType === 2 ? style.active : ""} onClick={() => {dispatch(changeSortType(2)); setIsSortActive(false)}}>алфавиту (А-Я)</li>
                 </ul>
               </div>}
     </div>

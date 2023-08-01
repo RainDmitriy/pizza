@@ -1,8 +1,13 @@
 import React from 'react';
 import style from './PizzaBlock.module.scss';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateCartItems } from '../../redux/slices/cartSlice';
 
-function PizzaBlock({title, price, types, sizes, image, cartItems, setCartItems}) {
+function PizzaBlock({title, price, types, sizes, image }) {
+
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector(state => state.cart);
 
   const [selectedType, setSelectedType] = React.useState(0);
   const [selectedSize, setSelectedSize] = React.useState(0);
@@ -14,14 +19,14 @@ function PizzaBlock({title, price, types, sizes, image, cartItems, setCartItems}
         axios.put(`http://localhost:5000/cart/${inCart[0].id}`, {
           title, price, image, selectedType, selectedSize, quantity: inCart[0].quantity + 1
         })
-        setCartItems((prev) => [...prev.filter((item) => item.id !== inCart[0].id), {
+        dispatch(updateCartItems([...cartItems.filter((item) => item.id !== inCart[0].id), {
           title, price, image, selectedType, selectedSize, quantity: inCart[0].quantity + 1, id: inCart[0].id
-        }]);
+        }]));
       } else {
         axios.post(`http://localhost:5000/cart`, {
           title, price, image, selectedType, selectedSize, quantity: 1
         })
-        setCartItems((prev) => [...prev, {title, price, image, selectedType, selectedSize, quantity: 1, id: cartItems.length > 0 ? (cartItems[cartItems.length - 1].id + 1) : 1}]);
+        dispatch(updateCartItems([...cartItems, {title, price, image, selectedType, selectedSize, quantity: 1, id: cartItems.length > 0 ? (cartItems[cartItems.length - 1].id + 1) : 1}]));
       }
     } catch (e) {
       console.log("Не удалось добавить в корзину");

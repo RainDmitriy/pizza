@@ -1,13 +1,18 @@
 import React from "react";
 import axios from "axios";
-import { AppContext } from "../../context";
+import { useSelector, useDispatch } from "react-redux";
+import { updateCartItems } from "../../redux/slices/cartSlice";
+
 
 function CartItem({title, price, image, id, quantity, selectedSize, selectedType}) {
 
-  const {cartItems, setCartItems} = React.useContext(AppContext); 
+  const { cartItems } = useSelector(state => state.cart);
+  const dispatch = useDispatch(); 
 
   const typeTranslate = ['тонкое', 'традиционное'];
   const sizeTranslate = [25, 30, 35];
+
+  console.log("Перерисовка карточки");
 
   const onClickMinus = async () => {
     try {
@@ -20,7 +25,7 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
           price,
           image
         });
-      setCartItems((prev) => [...prev.filter((item) => item.id !== id), {
+      dispatch(updateCartItems([...cartItems.filter((item) => item.id !== id), {
         quantity: quantity - 1,
         selectedSize,
         selectedType,
@@ -28,7 +33,7 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
         price,
         image,
         id
-      }])
+      }]))
       }
     } catch (e) {
       console.log("Не удалось уменьшить количество");
@@ -45,7 +50,7 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
         price,
         image
       });
-      setCartItems((prev) => [...prev.filter((item) => item.id !== id), {
+      dispatch(updateCartItems([...cartItems.filter((item) => item.id !== id), {
         quantity: quantity + 1,
         selectedSize,
         selectedType,
@@ -53,7 +58,7 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
         price,
         image,
         id
-      }])
+      }]))
     } catch (e) {
       console.log("Не удалось уменьшить количество");
     }
@@ -62,7 +67,7 @@ function CartItem({title, price, image, id, quantity, selectedSize, selectedType
   const onClickRemove = () => {
     try {
       axios.delete(`http://localhost:5000/cart/${id}`);
-      setCartItems(cartItems.filter((item) => item.id !== id));
+      dispatch(updateCartItems(cartItems.filter((item) => item.id !== id)));
     } catch (e) {
       console.log("Не удалось удалить пиццу из корзины");
     }
