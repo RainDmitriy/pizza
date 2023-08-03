@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   sortType: 0,
-  filterType: 0
-}
+  filterType: 0,
+};
 
 export const filterSlice = createSlice({
-  name: "filter",
+  name: 'filter',
   initialState,
   reducers: {
     changeSortType: (state, action) => {
@@ -15,8 +15,8 @@ export const filterSlice = createSlice({
     changeFilterType: (state, action) => {
       state.filterType = action.payload;
     },
-  }
-})
+  },
+});
 
 export const { changeSortType, changeFilterType } = filterSlice.actions;
 

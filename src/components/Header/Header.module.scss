@@ -36,48 +36,47 @@
 }
 
 .buttonCart {
-    display: flex;
-    align-items: center;
-    line-height: 23px;
-    padding: 12px 25px;
-    background-color: #fe5f1e;
-    border-radius: 30px;
-    min-width: 100px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color .15s ease-in-out,border-color .15s ease-in-out;
-    border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  line-height: 23px;
+  padding: 12px 25px;
+  background-color: #fe5f1e;
+  border-radius: 30px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 1px solid transparent;
 
-    &:hover {
-      background-color: darken(#fe5f1e, 8%);
-    }
+  &:hover {
+    background-color: darken(#fe5f1e, 8%);
+  }
 
-    &:active {
-      transform: translateY(1px);
-      background-color: darken(#fe5f1e, 12%);
-    }
+  &:active {
+    transform: translateY(1px);
+    background-color: darken(#fe5f1e, 12%);
+  }
 
-    svg {
-      margin-right: 8px;
-      margin-bottom: 1px;
-    }
+  svg {
+    margin-right: 8px;
+    margin-bottom: 1px;
+  }
 
-    span {
-      font-weight: 600;
-      font-size: 16px;
-      color: #fff;
-    }
+  span {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+  }
 
-    @media (max-width: 700px) {
-      margin-top: 20px;
-    }
-
+  @media (max-width: 700px) {
+    margin-top: 20px;
+  }
 }
 
 .delimiter {
-    width: 1px;
-    height: 25px;
-    background-color: rgba(255, 255, 255, 0.25);
-    margin-left: 14px;
-    margin-right: 14px;
+  width: 1px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin-left: 14px;
+  margin-right: 14px;
 }

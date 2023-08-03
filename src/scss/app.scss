@@ -36,12 +36,12 @@ body {
   }
 
   &__items {
-    display: grid; 
+    display: grid;
     justify-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 30px 30px;
-    
+
     @media (max-width: 1500px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
@@ -147,7 +147,6 @@ body {
       @media (max-width: 580px) {
         display: none;
       }
-
     }
 
     &-info {
@@ -188,9 +187,8 @@ body {
       }
 
       @media (max-width: 470px) {
-        display: none;        
+        display: none;
       }
-
     }
 
     &-price {

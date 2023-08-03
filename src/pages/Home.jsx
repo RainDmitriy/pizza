@@ -4,10 +4,9 @@ import PizzaBlock from '../components/PizzaBlock';
 import Sort from '../components/Sort';
 import Categories from '../components/Categories';
 import ContentLoader from 'react-content-loader';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 function Home() {
-
   const { sortType, filterType } = useSelector((state) => state.filter);
   const { items, isLoaded } = useSelector((state) => state.items);
 
@@ -23,7 +22,7 @@ function Home() {
       default:
         return pizzasCopy;
     }
-  }
+  };
 
   const filtered = (pizzas, filterType) => {
     switch (filterType) {
@@ -40,7 +39,7 @@ function Home() {
       default:
         return pizzas;
     }
-  }
+  };
 
   return (
     <div className="wrapper">
@@ -53,27 +52,25 @@ function Home() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            { isLoaded ? 
-              sorted(filtered(items, filterType), sortType).map((item) => 
-                <PizzaBlock 
-                key={item.id}
-                {...item}/>
-              ) : [...Array(16)].map((obj) =>
-                <ContentLoader 
-                  speed={2}
-                  width={280}
-                  height={466}
-                  viewBox="0 0 280 466"
-                  backgroundColor="#f3f3f3"
-                  foregroundColor="#ecebeb"
-                >
-                  <circle cx="130" cy="130" r="120" /> 
-                  <rect x="0" y="260" rx="0" ry="0" width="280" height="26" /> 
-                  <rect x="129" y="416" rx="20" ry="20" width="151" height="46" /> 
-                  <rect x="2" y="306" rx="10" ry="10" width="276" height="90" /> 
-                  <rect x="35" y="426" rx="0" ry="0" width="60" height="27" />
-                </ContentLoader>)
-            }
+            {isLoaded
+              ? sorted(filtered(items, filterType), sortType).map((item) => (
+                  <PizzaBlock key={item.id} {...item} />
+                ))
+              : [...Array(16)].map((obj) => (
+                  <ContentLoader
+                    speed={2}
+                    width={280}
+                    height={466}
+                    viewBox="0 0 280 466"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb">
+                    <circle cx="130" cy="130" r="120" />
+                    <rect x="0" y="260" rx="0" ry="0" width="280" height="26" />
+                    <rect x="129" y="416" rx="20" ry="20" width="151" height="46" />
+                    <rect x="2" y="306" rx="10" ry="10" width="276" height="90" />
+                    <rect x="35" y="426" rx="0" ry="0" width="60" height="27" />
+                  </ContentLoader>
+                ))}
           </div>
         </div>
       </div>

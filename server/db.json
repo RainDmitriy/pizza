@@ -515,36 +515,20 @@
   ],
   "cart": [
     {
-      "quantity": 17,
+      "quantity": 3,
       "selectedSize": 0,
       "selectedType": 0,
-      "title": "Цыплёнок карри",
+      "title": "Карбонара",
       "price": [
-        419,
-        629,
-        749
+        469,
+        719,
+        799
       ],
       "image": [
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/c5e5a95aec334241ae326988823dab49_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/9f54fa5d2d204f5fa70579e2e1982d03_584x584.jpeg"
       ],
       "id": 1
-    },
-    {
-      "title": "Цыплёнок карри",
-      "price": [
-        419,
-        629,
-        749
-      ],
-      "image": [
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
-        "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
-      ],
-      "selectedType": 0,
-      "selectedSize": 2,
-      "quantity": 11,
-      "id": 2
     }
   ],
   "orders": [
@@ -585,6 +569,130 @@
       ],
       "totalPrice": 28278,
       "id": 1
+    },
+    {
+      "cartItems": [
+        {
+          "quantity": 18,
+          "selectedSize": 0,
+          "selectedType": 0,
+          "title": "Цыплёнок карри",
+          "price": [
+            419,
+            629,
+            749
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
+          ],
+          "id": 1
+        },
+        {
+          "quantity": 30,
+          "selectedSize": 2,
+          "selectedType": 0,
+          "title": "Цыплёнок карри",
+          "price": [
+            419,
+            629,
+            749
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
+          ],
+          "id": 2
+        },
+        {
+          "quantity": 32,
+          "selectedSize": 0,
+          "selectedType": 0,
+          "title": "Карбонара",
+          "price": [
+            469,
+            719,
+            799
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c5e5a95aec334241ae326988823dab49_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/9f54fa5d2d204f5fa70579e2e1982d03_584x584.jpeg"
+          ],
+          "id": 3
+        }
+      ],
+      "totalPrice": 45020,
+      "id": 2
+    },
+    {
+      "cartItems": [
+        {
+          "title": "Цыплёнок карри",
+          "price": [
+            419,
+            629,
+            749
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/24304304128a4f2598daf620552ede4e_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_584x584.jpeg"
+          ],
+          "selectedType": 0,
+          "selectedSize": 0,
+          "quantity": 11,
+          "id": 1
+        },
+        {
+          "title": "Мясной микс с пастрами из говядины",
+          "price": [
+            519,
+            819,
+            949
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/bff40a96e24f42a3919806921d3b5450_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg"
+          ],
+          "selectedType": 0,
+          "selectedSize": 0,
+          "quantity": 7,
+          "id": 2
+        },
+        {
+          "title": "Мясной микс с пастрами из говядины",
+          "price": [
+            519,
+            819,
+            949
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/bff40a96e24f42a3919806921d3b5450_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg"
+          ],
+          "selectedType": 0,
+          "selectedSize": 1,
+          "quantity": 8,
+          "id": 3
+        },
+        {
+          "title": "Мясной микс с пастрами из говядины",
+          "price": [
+            519,
+            819,
+            949
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/bff40a96e24f42a3919806921d3b5450_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg"
+          ],
+          "selectedType": 1,
+          "selectedSize": 1,
+          "quantity": 10,
+          "id": 4
+        }
+      ],
+      "totalPrice": 22984,
+      "id": 3
     }
   ]
 }
