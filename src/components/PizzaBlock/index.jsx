@@ -22,14 +22,6 @@ function PizzaBlock({ title, price, types, sizes, image }) {
   const onClickAdd = async () => {
     try {
       if (inCart.length > 0) {
-        axios.put(`http://localhost:5000/cart/${inCart[0].id}`, {
-          title,
-          price,
-          image,
-          selectedType,
-          selectedSize,
-          quantity: inCart[0].quantity + 1,
-        });
         dispatch(
           updateCartItems([
             ...cartItems.filter((item) => item.id !== inCart[0].id),
@@ -44,15 +36,15 @@ function PizzaBlock({ title, price, types, sizes, image }) {
             },
           ]),
         );
-      } else {
-        axios.post(`http://localhost:5000/cart`, {
+        axios.put(`http://localhost:5000/cart/${inCart[0].id}`, {
           title,
           price,
           image,
           selectedType,
           selectedSize,
-          quantity: 1,
+          quantity: inCart[0].quantity + 1,
         });
+      } else {
         dispatch(
           updateCartItems([
             ...cartItems,
@@ -67,6 +59,14 @@ function PizzaBlock({ title, price, types, sizes, image }) {
             },
           ]),
         );
+        axios.post(`http://localhost:5000/cart`, {
+          title,
+          price,
+          image,
+          selectedType,
+          selectedSize,
+          quantity: 1,
+        });
       }
     } catch (e) {
       console.log('Не удалось добавить в корзину');

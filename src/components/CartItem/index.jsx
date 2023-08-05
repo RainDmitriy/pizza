@@ -15,14 +15,6 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
   const onClickMinus = async () => {
     try {
       if (quantity > 1) {
-        axios.put(`http://localhost:5000/cart/${id}`, {
-          quantity: quantity - 1,
-          selectedSize,
-          selectedType,
-          title,
-          price,
-          image,
-        });
         dispatch(
           updateCartItems([
             ...cartItems.filter((item) => item.id !== id),
@@ -37,6 +29,14 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
             },
           ]),
         );
+        axios.put(`http://localhost:5000/cart/${id}`, {
+          quantity: quantity - 1,
+          selectedSize,
+          selectedType,
+          title,
+          price,
+          image,
+        });
       }
     } catch (e) {
       console.log('Не удалось уменьшить количество');
@@ -45,14 +45,6 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
 
   const onClickPlus = () => {
     try {
-      axios.put(`http://localhost:5000/cart/${id}`, {
-        quantity: quantity + 1,
-        selectedSize,
-        selectedType,
-        title,
-        price,
-        image,
-      });
       dispatch(
         updateCartItems([
           ...cartItems.filter((item) => item.id !== id),
@@ -67,6 +59,14 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
           },
         ]),
       );
+      axios.put(`http://localhost:5000/cart/${id}`, {
+        quantity: quantity + 1,
+        selectedSize,
+        selectedType,
+        title,
+        price,
+        image,
+      });
     } catch (e) {
       console.log('Не удалось уменьшить количество');
     }
@@ -74,8 +74,8 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
 
   const onClickRemove = () => {
     try {
-      axios.delete(`http://localhost:5000/cart/${id}`);
       dispatch(updateCartItems(cartItems.filter((item) => item.id !== id)));
+      axios.delete(`http://localhost:5000/cart/${id}`);
     } catch (e) {
       console.log('Не удалось удалить пиццу из корзины');
     }
