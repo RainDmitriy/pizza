@@ -11,16 +11,15 @@ function Home() {
   const { items, isLoaded } = useSelector((state) => state.items);
 
   const sorted = (pizzas, sortType) => {
-    let pizzasCopy = [...pizzas];
     switch (sortType) {
       case 0:
-        return pizzasCopy.sort((a, b) => b.rating - a.rating);
+        return pizzas.toSorted((a, b) => b.rating - a.rating);
       case 1:
-        return pizzasCopy.sort((a, b) => a.price[0] - b.price[0]);
+        return pizzas.toSorted((a, b) => a.price[0] - b.price[0]);
       case 2:
-        return pizzasCopy.sort((a, b) => a.title.localeCompare(b.title));
+        return pizzas.toSorted((a, b) => a.title.localeCompare(b.title));
       default:
-        return pizzasCopy;
+        return pizzas;
     }
   };
 
