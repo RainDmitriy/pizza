@@ -17,17 +17,12 @@ func New(addr string, r *http.ServeMux) *api {
 }
 
 func (api *api) FillEndpoints() {
-	api.r.HandleFunc("/ping", pong)
+	// api.r.HandleFunc("/items", GetItems)
 
 }
 
 func (api *api) ListenAndServe() error {
 
 	return http.ListenAndServe(api.addr, api.r)
-
-}
-
-func pong(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("pong"))
 
 }

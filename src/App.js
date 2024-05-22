@@ -14,10 +14,10 @@ function App() {
 
   const getData = async () => {
     try {
-      await axios.get('http://localhost:5000/cart').then((res) => {
+      await axios.get('http://localhost:8080/cart').then((res) => {
         dispatch(updateCartItems(res.data));
       });
-      await axios.get('http://localhost:5000/items').then((res) => {
+      await axios.get('http://localhost:8080/items').then((res) => {
         dispatch(updateItems(res.data));
       });
       await dispatch(loadToggle(true));

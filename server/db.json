@@ -812,6 +812,28 @@
       ],
       "totalPrice": 21981,
       "id": 7
+    },
+    {
+      "cartItems": [
+        {
+          "quantity": 8,
+          "selectedSize": 2,
+          "selectedType": 0,
+          "title": "Карбонара",
+          "price": [
+            469,
+            719,
+            799
+          ],
+          "image": [
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/c5e5a95aec334241ae326988823dab49_584x584.jpeg",
+            "https://dodopizza-a.akamaihd.net/static/Img/Products/9f54fa5d2d204f5fa70579e2e1982d03_584x584.jpeg"
+          ],
+          "id": 2
+        }
+      ],
+      "totalPrice": 6392,
+      "id": 8
     }
   ]
 }
