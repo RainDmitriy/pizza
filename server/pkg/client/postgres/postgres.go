@@ -23,7 +23,7 @@ type Client interface {
 }
 
 func NewClient(ctx context.Context, maxAttempts int, delay time.Duration, username, password, database, host, port string) (pool *pgxpool.Pool, err error) {
-	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", username, password, host, port, database)
+	dsn := fmt.Sprintf("postgresql://%s:%s@%s:%s/%s", username, password, host, port, database)
 	triable.ExecuteWithTries(func() error {
 		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 		defer cancel()

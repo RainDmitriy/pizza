@@ -17,8 +17,7 @@ func New(addr string, r *http.ServeMux) *api {
 }
 
 func (api *api) FillEndpoints() {
-	// api.r.HandleFunc("/items", GetItems)
-
+	// To do: implement me
 }
 
 func (api *api) ListenAndServe() error {
