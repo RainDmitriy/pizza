@@ -513,7 +513,24 @@
       ]
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "title": "Мясной микс с пастрами из говядины",
+      "price": [
+        519,
+        819,
+        949
+      ],
+      "image": [
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/bff40a96e24f42a3919806921d3b5450_584x584.jpeg",
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/4cc24119285949f09e5a4da61fd711ed_584x584.jpeg"
+      ],
+      "selectedType": 0,
+      "selectedSize": 0,
+      "quantity": 7,
+      "id": 1
+    }
+  ],
   "orders": [
     {
       "cartItems": [
