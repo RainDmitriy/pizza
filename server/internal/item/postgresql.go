@@ -1,7 +1,6 @@
 package item
 
 import (
-	"PizzaApi/internal/item"
 	"PizzaApi/pkg/client/postgres"
 	"context"
 	"fmt"
@@ -13,7 +12,7 @@ type repository struct {
 	client postgres.Client
 }
 
-func (r *repository) Create(ctx context.Context, item *item.Item) error {
+func (r *repository) Create(ctx context.Context, item *Item) error {
 	q := `
 				INSERT INTO items
 					(title, types, price, rating, image, sizes, props)
@@ -33,7 +32,7 @@ func (r *repository) Create(ctx context.Context, item *item.Item) error {
 	return nil
 }
 
-func (r *repository) FindAll(ctx context.Context) ([]item.Item, error) {
+func (r *repository) FindAll(ctx context.Context) ([]Item, error) {
 	q := `SELECT 
 					id, title, types, price, rating, image, sizes, props
 				FROM items
@@ -45,9 +44,9 @@ func (r *repository) FindAll(ctx context.Context) ([]item.Item, error) {
 		return nil, err
 	}
 
-	items := make([]item.Item, 0)
+	items := make([]Item, 0)
 	for rows.Next() {
-		var item item.Item
+		var item Item
 		err = rows.Scan(&item.Id, &item.Title, &item.Types, &item.Prices, &item.Rating, &item.Image, &item.Sizes, &item.Props)
 		if err != nil {
 			return nil, err
@@ -60,7 +59,7 @@ func (r *repository) FindAll(ctx context.Context) ([]item.Item, error) {
 	return items, nil
 }
 
-func (r *repository) FindOne(ctx context.Context, id int) (item.Item, error) {
+func (r *repository) FindOne(ctx context.Context, id int) (Item, error) {
 
 	q := `SELECT 
 					id, title, types, price, rating, image, sizes, props
@@ -68,44 +67,44 @@ func (r *repository) FindOne(ctx context.Context, id int) (item.Item, error) {
 				WHERE id = $1
 				ORDER BY id
 			 `
-	var i item.Item
+	var i Item
 	err := r.client.QueryRow(ctx, q, id).Scan(&i.Id, &i.Title, &i.Types, &i.Prices, &i.Rating, &i.Image, &i.Sizes, &i.Props)
 
 	if err != nil {
-		return item.Item{}, err
+		return Item{}, err
 	}
 	return i, nil
 }
-func (r *repository) Update(ctx context.Context, id int, updatedItem *item.Item) (item.Item, error) {
+func (r *repository) Update(ctx context.Context, id int, updatedItem *Item) (Item, error) {
 	q := `UPDATE items
 			SET title = $1, types = $2, price = $3, rating = $4, image = $5, sizes = $6, props = $7
 			WHERE id = $8
 			RETURNING id, title, types, price, rating, image, sizes, props
 			`
-	var i item.Item
+	var i Item
 	err := r.client.QueryRow(ctx, q, updatedItem.Title, updatedItem.Types, updatedItem.Prices, updatedItem.Rating, updatedItem.Image, updatedItem.Sizes, updatedItem.Props, id).Scan(&i.Id, &i.Title, &i.Types, &i.Prices, &i.Rating, &i.Image, &i.Sizes, &i.Props)
 
 	if err != nil {
-		return item.Item{}, err
+		return Item{}, err
 	}
 	return i, nil
 }
 
-func (r *repository) Delete(ctx context.Context, id int) (item.Item, error) {
+func (r *repository) Delete(ctx context.Context, id int) (Item, error) {
 	q := `DELETE FROM items
 			WHERE id = $1
 			RETURNING id, title, types, price, rating, image, sizes, props
 			`
-	var i item.Item
+	var i Item
 	err := r.client.QueryRow(ctx, q, id).Scan(&i.Id, &i.Title, &i.Types, &i.Prices, &i.Rating, &i.Image, &i.Sizes, &i.Props)
 
 	if err != nil {
-		return item.Item{}, err
+		return Item{}, err
 	}
 	return i, nil
 }
 
-func NewRepository(client postgres.Client) item.Repository {
+func NewRepository(client postgres.Client) Repository {
 	return &repository{
 		client: client,
 	}
