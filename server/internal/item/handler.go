@@ -28,7 +28,6 @@ func ItemHandler(w http.ResponseWriter, r *http.Request, client postgres.Client)
 func GetItem(w http.ResponseWriter, r *http.Request, repository Repository) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
 		log.Default().Println(err)
 	}
 	if id == 0 {
@@ -37,28 +36,27 @@ func GetItem(w http.ResponseWriter, r *http.Request, repository Repository) {
 			log.Default().Println(err)
 			w.WriteHeader(http.StatusInternalServerError)
 		} else {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
 			w.Header().Set("Content-Type", "application/json")
+
 			if err := json.NewEncoder(w).Encode(i); err != nil {
 				log.Default().Println(err)
 				w.WriteHeader(http.StatusInternalServerError)
 			}
-			{
-				w.WriteHeader(http.StatusOK)
-			}
 		}
-	}
-	i, err := repository.FindOne(r.Context(), id)
-	if err != nil {
-		log.Default().Println(err)
-		w.WriteHeader(http.StatusInternalServerError)
 	} else {
-		w.Header().Set("Content-Type", "application/json")
-		if err := json.NewEncoder(w).Encode(i); err != nil {
+		i, err := repository.FindOne(r.Context(), id)
+		if err != nil {
 			log.Default().Println(err)
 			w.WriteHeader(http.StatusInternalServerError)
-		}
-		{
-			w.WriteHeader(http.StatusOK)
+		} else {
+			w.Header().Set("Content-Type", "application/json")
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+
+			if err := json.NewEncoder(w).Encode(i); err != nil {
+				log.Default().Println(err)
+				w.WriteHeader(http.StatusInternalServerError)
+			}
 		}
 	}
 }

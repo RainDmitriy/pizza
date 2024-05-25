@@ -28,13 +28,13 @@ function Home() {
       case 0:
         return pizzas;
       case 1:
-        return pizzas.filter((item) => item.props[0].meat === true);
+        return pizzas.filter((item) => item.Props[0] === true);
       case 2:
-        return pizzas.filter((item) => item.props[0].vegetarian === true);
+        return pizzas.filter((item) => item.Props[1] === true);
       case 3:
-        return pizzas.filter((item) => item.props[0].grilled === true);
+        return pizzas.filter((item) => item.Props[2] === true);
       case 4:
-        return pizzas.filter((item) => item.props[0].spicy === true);
+        return pizzas.filter((item) => item.Props[3] === true);
       default:
         return pizzas;
     }
@@ -53,7 +53,7 @@ function Home() {
           <div className="content__items">
             {isLoaded
               ? sorted(filtered(items, filterType), sortType).map((item) => (
-                  <PizzaBlock key={item.id} {...item} />
+                  <PizzaBlock key={item.Id} {...item} />
                 ))
               : [...Array(16)].map((obj) => (
                   <ContentLoader

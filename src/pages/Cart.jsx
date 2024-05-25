@@ -33,7 +33,7 @@ function Cart() {
 
   const displayCart = (items) => {
     let itemsList = [...items];
-    return itemsList.sort((a, b) => a.id - b.id);
+    return itemsList.sort((a, b) => a.Id - b.Id);
   };
 
   return (
@@ -117,7 +117,7 @@ function Cart() {
               </div>
               <div className="content__item">
                 {displayCart(cartItems).map((item) => (
-                  <CartItem key={item.id} id={item.id} {...item} />
+                  <CartItem key={item.Id} id={item.Id} {...item} />
                 ))}
               </div>
               <div className="cart__bottom">

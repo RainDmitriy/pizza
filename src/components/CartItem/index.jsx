@@ -3,39 +3,37 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartItems } from '../../redux/slices/cartSlice';
 
-function CartItem({ title, price, image, id, quantity, selectedSize, selectedType }) {
+function CartItem({ Title, Price, Image, Id, Quantity, SelectedSize, SelectedType }) {
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const typeTranslate = ['тонкое', 'традиционное'];
   const sizeTranslate = [25, 30, 35];
 
-  console.log('Перерисовка карточки');
-
   const onClickMinus = async () => {
     try {
-      if (quantity > 1) {
+      if (Quantity > 1) {
         dispatch(
           updateCartItems([
-            ...cartItems.filter((item) => item.id !== id),
+            ...cartItems.filter((item) => item.Id !== Id),
             {
-              quantity: quantity - 1,
-              selectedSize,
-              selectedType,
-              title,
-              price,
-              image,
-              id,
+              Quantity: Quantity - 1,
+              SelectedSize,
+              SelectedType,
+              Title,
+              Price,
+              Image,
+              Id,
             },
           ]),
         );
-        axios.put(`http://localhost:5000/cart/${id}`, {
-          quantity: quantity - 1,
-          selectedSize,
-          selectedType,
-          title,
-          price,
-          image,
+        axios.put(`http://localhost:5000/cart/${Id}`, {
+          Quantity: Quantity - 1,
+          SelectedSize,
+          SelectedType,
+          Title,
+          Price,
+          Image,
         });
       }
     } catch (e) {
@@ -47,25 +45,25 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
     try {
       dispatch(
         updateCartItems([
-          ...cartItems.filter((item) => item.id !== id),
+          ...cartItems.filter((item) => item.Id !== Id),
           {
-            quantity: quantity + 1,
-            selectedSize,
-            selectedType,
-            title,
-            price,
-            image,
-            id,
+            Quantity: Quantity + 1,
+            SelectedSize,
+            SelectedType,
+            Title,
+            Price,
+            Image,
+            Id,
           },
         ]),
       );
-      axios.put(`http://localhost:5000/cart/${id}`, {
-        quantity: quantity + 1,
-        selectedSize,
-        selectedType,
-        title,
-        price,
-        image,
+      axios.put(`http://localhost:5000/cart/${Id}`, {
+        Quantity: Quantity + 1,
+        SelectedSize,
+        SelectedType,
+        Title,
+        Price,
+        Image,
       });
     } catch (e) {
       console.log('Не удалось уменьшить количество');
@@ -74,8 +72,8 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
 
   const onClickRemove = () => {
     try {
-      dispatch(updateCartItems(cartItems.filter((item) => item.id !== id)));
-      axios.delete(`http://localhost:5000/cart/${id}`);
+      dispatch(updateCartItems(cartItems.filter((item) => item.Id !== Id)));
+      axios.delete(`http://localhost:5000/cart/${Id}`);
     } catch (e) {
       console.log('Не удалось удалить пиццу из корзины');
     }
@@ -84,12 +82,12 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
   return (
     <div class="cart__item">
       <div class="cart__item-img">
-        <img class="pizza-block__image" src={image[selectedType]} alt="Pizza" />
+        <img class="pizza-block__Image" src={Image[SelectedType]} alt="Pizza" />
       </div>
       <div class="cart__item-info">
-        <h3>{title}</h3>
+        <h3>{Title}</h3>
         <p>
-          {typeTranslate[selectedType]} тесто, {sizeTranslate[selectedSize]} см.
+          {typeTranslate[SelectedType]} тесто, {sizeTranslate[SelectedSize]} см.
         </p>
       </div>
       <div class="cart__item-count">
@@ -97,7 +95,7 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
           class="button button--outline button--circle cart__item-count-minus"
           onClick={() => onClickMinus()}>
           <svg
-            width="10"
+            wIdth="10"
             height="10"
             viewBox="0 0 10 10"
             fill="none"
@@ -112,12 +110,12 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
             />
           </svg>
         </div>
-        <b>{quantity}</b>
+        <b>{Quantity}</b>
         <div
           class="button button--outline button--circle cart__item-count-plus"
           onClick={() => onClickPlus()}>
           <svg
-            width="10"
+            wIdth="10"
             height="10"
             viewBox="0 0 10 10"
             fill="none"
@@ -133,13 +131,13 @@ function CartItem({ title, price, image, id, quantity, selectedSize, selectedTyp
           </svg>
         </div>
       </div>
-      <div class="cart__item-price">
-        <b>{price[selectedSize] * quantity} ₽</b>
+      <div class="cart__item-Price">
+        <b>{Price[SelectedSize] * Quantity} ₽</b>
       </div>
       <div class="cart__item-remove" onClick={() => onClickRemove()}>
         <div class="button button--outline button--circle">
           <svg
-            width="10"
+            wIdth="10"
             height="10"
             viewBox="0 0 10 10"
             fill="none"

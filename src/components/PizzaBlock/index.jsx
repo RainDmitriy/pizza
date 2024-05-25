@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartItems } from '../../redux/slices/cartSlice';
 
-function PizzaBlock({ title, price, types, sizes, image }) {
+function PizzaBlock({ Title, Prices, Types, Sizes, Image }) {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -13,9 +13,9 @@ function PizzaBlock({ title, price, types, sizes, image }) {
   const [inCart, setInCart] = React.useState(
     cartItems.filter(
       (item) =>
-        item.selectedType === selectedType &&
-        item.selectedSize === selectedSize &&
-        item.title === title,
+        item.SelectedType === selectedType &&
+        item.SelectedSize === selectedSize &&
+        item.Title === Title,
     ),
   );
 
@@ -24,48 +24,48 @@ function PizzaBlock({ title, price, types, sizes, image }) {
       if (inCart.length > 0) {
         dispatch(
           updateCartItems([
-            ...cartItems.filter((item) => item.id !== inCart[0].id),
+            ...cartItems.filter((item) => item.Id !== inCart[0].Id),
             {
-              title,
-              price,
-              image,
-              selectedType,
-              selectedSize,
-              quantity: inCart[0].quantity + 1,
-              id: inCart[0].id,
+              Title,
+              Prices,
+              Image,
+              SelectedType: selectedType,
+              SelectedSize: selectedSize,
+              Quantity: inCart[0].Quantity + 1,
+              Id: inCart[0].Id,
             },
           ]),
         );
-        axios.put(`http://localhost:5000/cart/${inCart[0].id}`, {
-          title,
-          price,
-          image,
-          selectedType,
-          selectedSize,
-          quantity: inCart[0].quantity + 1,
+        axios.put(`http://localhost:5000/cart/${inCart[0].Id}`, {
+          Title,
+          Prices,
+          Image,
+          SelectedType: selectedType,
+          SelectedSize: selectedSize,
+          Quantity: inCart[0].Quantity + 1,
         });
       } else {
         dispatch(
           updateCartItems([
             ...cartItems,
             {
-              title,
-              price,
-              image,
-              selectedType,
-              selectedSize,
-              quantity: 1,
-              id: cartItems.length > 0 ? cartItems[cartItems.length - 1].id + 1 : 1,
+              Title,
+              Prices,
+              Image,
+              SelectedType: selectedType,
+              SelectedSize: selectedSize,
+              Quantity: 1,
+              Id: cartItems.length > 0 ? cartItems[cartItems.length - 1].Id + 1 : 1,
             },
           ]),
         );
         axios.post(`http://localhost:5000/cart`, {
-          title,
-          price,
-          image,
-          selectedType,
-          selectedSize,
-          quantity: 1,
+          Title,
+          Prices,
+          Image,
+          SelectedType: selectedType,
+          SelectedSize: selectedSize,
+          Quantity: 1,
         });
       }
     } catch (e) {
@@ -79,21 +79,21 @@ function PizzaBlock({ title, price, types, sizes, image }) {
     setInCart(
       cartItems.filter(
         (item) =>
-          item.selectedType === selectedType &&
-          item.selectedSize === selectedSize &&
-          item.title === title,
+          item.SelectedType === selectedType &&
+          item.SelectedSize === selectedSize &&
+          item.Title === Title,
       ),
     );
   }, [selectedType, selectedSize, cartItems]);
 
   return (
     <div className={style.pizzaBlock}>
-      <img className={style.pizzaBlockImage} src={image[selectedType]} alt="Pizza" />
+      <img className={style.pizzaBlockImage} src={Image[selectedType]} alt="Pizza" />
 
-      <h4 className={style.pizzaBlockTitle}>{title}</h4>
+      <h4 className={style.pizzaBlockTitle}>{Title}</h4>
       <div className={style.pizzaBlockSelector}>
         <ul style={{ marginBottom: '8px' }}>
-          {types.map((item) => (
+          {Types.map((item) => (
             <li
               key={item}
               className={selectedType === item ? style.active : ''}
@@ -103,21 +103,21 @@ function PizzaBlock({ title, price, types, sizes, image }) {
           ))}
         </ul>
         <ul>
-          {sizes.map((item) => (
+          {Sizes.map((item) => (
             <li
               key={item}
-              className={selectedSize === sizes.indexOf(item) ? style.active : ''}
-              onClick={() => setSelectedSize(sizes.indexOf(item))}>
+              className={selectedSize === Sizes.indexOf(item) ? style.active : ''}
+              onClick={() => setSelectedSize(Sizes.indexOf(item))}>
               {item} см
             </li>
           ))}
         </ul>
       </div>
       <div className={style.pizzaBlockBottom}>
-        <div className={style.pizzaBlockPrice}>{price[selectedSize]} ₽</div>
+        <div className={style.pizzaBlockPrice}>{Prices[selectedSize]} ₽</div>
         <div className="button button--outline button--add" onClick={() => onClickAdd()}>
           <svg
-            width="12"
+            wIdth="12"
             height="12"
             viewBox="0 0 12 12"
             fill="none"
@@ -128,7 +128,7 @@ function PizzaBlock({ title, price, types, sizes, image }) {
             />
           </svg>
           <span>Добавить</span>
-          {inCart.length > 0 ? <i>{inCart[0].quantity}</i> : ''}
+          {inCart.length > 0 ? <i>{inCart[0].Quantity}</i> : ''}
         </div>
       </div>
     </div>
