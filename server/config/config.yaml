@@ -2,6 +2,6 @@ delay: 5
 maxAttempts: 10
 username: 'user'
 password: 'pass'
-database: 'db'
+database: 'dbname'
 host: 'host'
 port: 'port'

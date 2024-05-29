@@ -16,18 +16,23 @@ func Handler(client postgres.Client) func(w http.ResponseWriter, r *http.Request
 }
 
 func ItemHandler(w http.ResponseWriter, r *http.Request, client postgres.Client) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Accept, X-PINGOTHER, Content-Type")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 	repository := NewRepository(client)
 	switch r.Method {
 	case http.MethodGet:
 		GetItem(w, r, repository)
+	case http.MethodOptions:
+		w.WriteHeader(http.StatusOK)
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
 }
 
 func GetItem(w http.ResponseWriter, r *http.Request, repository Repository) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Content-Type", "application/json")
 	id, err := strconv.Atoi(r.URL.Path[len("item/ "):])
 	if err != nil {
 		log.Default().Println(err)

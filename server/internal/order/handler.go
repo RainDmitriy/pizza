@@ -16,9 +16,11 @@ func Handler(client postgres.Client) func(w http.ResponseWriter, r *http.Request
 }
 
 func OrderHandler(w http.ResponseWriter, r *http.Request, client postgres.Client) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Accept, X-PINGOTHER, Content-Type")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 	repository := NewRepository(client)
 	switch r.Method {
 	case http.MethodGet:
@@ -67,7 +69,6 @@ func OrderHandler(w http.ResponseWriter, r *http.Request, client postgres.Client
 	case http.MethodOptions:
 		w.WriteHeader(http.StatusOK)
 	default:
-		log.Default().Println(r.Body)
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
 }
