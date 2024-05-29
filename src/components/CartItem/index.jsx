@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartItems } from '../../redux/slices/cartSlice';
 
-function CartItem({ Title, Price, Image, Id, Quantity, SelectedSize, SelectedType }) {
+function CartItem({ Title, Prices, Image, CartId, Quantity, SelectedSize, SelectedType }) {
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -15,24 +15,25 @@ function CartItem({ Title, Price, Image, Id, Quantity, SelectedSize, SelectedTyp
       if (Quantity > 1) {
         dispatch(
           updateCartItems([
-            ...cartItems.filter((item) => item.Id !== Id),
+            ...cartItems.filter((item) => item.CartId !== CartId),
             {
               Quantity: Quantity - 1,
               SelectedSize,
               SelectedType,
               Title,
-              Price,
+              Prices,
               Image,
-              Id,
+              CartId,
             },
           ]),
         );
-        axios.put(`http://localhost:5000/cart/${Id}`, {
+        axios.put(`http://localhost:8080/cart/${CartId}`, {
+          CartId,
           Quantity: Quantity - 1,
           SelectedSize,
           SelectedType,
           Title,
-          Price,
+          Prices,
           Image,
         });
       }
@@ -45,24 +46,25 @@ function CartItem({ Title, Price, Image, Id, Quantity, SelectedSize, SelectedTyp
     try {
       dispatch(
         updateCartItems([
-          ...cartItems.filter((item) => item.Id !== Id),
+          ...cartItems.filter((item) => item.CartId !== CartId),
           {
             Quantity: Quantity + 1,
             SelectedSize,
             SelectedType,
             Title,
-            Price,
+            Prices,
             Image,
-            Id,
+            CartId,
           },
         ]),
       );
-      axios.put(`http://localhost:5000/cart/${Id}`, {
+      axios.put(`http://localhost:8080/cart/${CartId}`, {
+        CartId,
         Quantity: Quantity + 1,
         SelectedSize,
         SelectedType,
         Title,
-        Price,
+        Prices,
         Image,
       });
     } catch (e) {
@@ -72,8 +74,8 @@ function CartItem({ Title, Price, Image, Id, Quantity, SelectedSize, SelectedTyp
 
   const onClickRemove = () => {
     try {
-      dispatch(updateCartItems(cartItems.filter((item) => item.Id !== Id)));
-      axios.delete(`http://localhost:5000/cart/${Id}`);
+      dispatch(updateCartItems(cartItems.filter((item) => item.CartId !== CartId)));
+      axios.delete(`http://localhost:8080/cart/${CartId}`);
     } catch (e) {
       console.log('Не удалось удалить пиццу из корзины');
     }
@@ -131,8 +133,8 @@ function CartItem({ Title, Price, Image, Id, Quantity, SelectedSize, SelectedTyp
           </svg>
         </div>
       </div>
-      <div class="cart__item-Price">
-        <b>{Price[SelectedSize] * Quantity} ₽</b>
+      <div class="cart__item-price">
+        <b>{Prices[SelectedSize] * Quantity} ₽</b>
       </div>
       <div class="cart__item-remove" onClick={() => onClickRemove()}>
         <div class="button button--outline button--circle">

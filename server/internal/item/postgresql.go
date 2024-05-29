@@ -3,40 +3,24 @@ package item
 import (
 	"PizzaApi/pkg/client/postgres"
 	"context"
-	"fmt"
-
-	"github.com/jackc/pgconn"
 )
 
 type repository struct {
 	client postgres.Client
 }
 
-func (r *repository) Create(ctx context.Context, item *Item) error {
-	q := `
-				INSERT INTO items
-					(title, types, price, rating, image, sizes, props)
-				VALUES 
-						($1, $2, $3, $4, $5, $6, $7) 
-				RETURNING id
-				`
-
-	if err := r.client.QueryRow(ctx, q, item.Title, item.Types, item.Prices, item.Rating, item.Image, item.Sizes, item.Props).Scan(&item.Id); err != nil {
-		if pgErr, ok := err.(*pgconn.PgError); ok {
-			newErr := fmt.Errorf(fmt.Sprintf("pq: code: %s, message: %s, details: %s", pgErr.Code, pgErr.Message, pgErr.Detail))
-			fmt.Println(newErr)
-			return newErr
-		}
-		return err
-	}
-	return nil
-}
-
-func (r *repository) FindAll(ctx context.Context) ([]Item, error) {
-	q := `SELECT 
-					id, title, types, price, rating, image, sizes, props
-				FROM items
-				ORDER BY id
+func (r *repository) GetAll(ctx context.Context) ([]Item, error) {
+	q := `SELECT i.ItemId, i.Title, i.Rating, i.types,
+					ARRAY[p.forSmall, p.forMiddle, p.forBig] AS Prices,
+					ARRAY[ps.Spicy, ps.Meat, ps.Vegetarian, ps.Grilled, ps.Closed] AS Props,
+					ARRAY[s.small, s.middle, s.big] AS Sizes,
+					ARRAY[im.thin, im.traditional] AS Image
+				FROM items i
+				JOIN prices p ON i.ItemId = p.ItemId
+				JOIN props ps ON i.ItemId = ps.ItemId
+				JOIN sizes s ON i.ItemId = s.ItemId
+				JOIN image im ON i.ItemId = im.ItemId
+				ORDER BY i.ItemId;
 			 `
 
 	rows, err := r.client.Query(ctx, q)
@@ -47,7 +31,7 @@ func (r *repository) FindAll(ctx context.Context) ([]Item, error) {
 	items := make([]Item, 0)
 	for rows.Next() {
 		var item Item
-		err = rows.Scan(&item.Id, &item.Title, &item.Types, &item.Prices, &item.Rating, &item.Image, &item.Sizes, &item.Props)
+		err = rows.Scan(&item.ItemId, &item.Title, &item.Rating, &item.Types, &item.Prices, &item.Props, &item.Sizes, &item.Image)
 		if err != nil {
 			return nil, err
 		}
@@ -59,49 +43,25 @@ func (r *repository) FindAll(ctx context.Context) ([]Item, error) {
 	return items, nil
 }
 
-func (r *repository) FindOne(ctx context.Context, id int) (Item, error) {
-
-	q := `SELECT 
-					id, title, types, price, rating, image, sizes, props
-				FROM items
-				WHERE id = $1
-				ORDER BY id
+func (r *repository) GetOne(ctx context.Context, id int) (Item, error) {
+	q := `SELECT i.ItemId, i.Title, i.Rating, i.types,
+					ARRAY[p.forSmall, p.forMiddle, p.forBig] AS Prices,
+					ARRAY[ps.Spicy, ps.Meat, ps.Vegetarian, ps.Grilled, ps.Closed] AS Props,
+					ARRAY[s.small, s.middle, s.big] AS Sizes,
+					ARRAY[im.thin, im.traditional] AS Image
+				FROM items i
+				JOIN prices p ON i.ItemId = p.ItemId
+				JOIN props ps ON i.ItemId = ps.ItemId
+				JOIN sizes s ON i.ItemId = s.ItemId
+				JOIN image im ON i.ItemId = im.ItemId
+				WHERE i.ItemId = $1;
 			 `
-	var i Item
-	err := r.client.QueryRow(ctx, q, id).Scan(&i.Id, &i.Title, &i.Types, &i.Prices, &i.Rating, &i.Image, &i.Sizes, &i.Props)
-
+	var item Item
+	err := r.client.QueryRow(ctx, q, id).Scan(&item.ItemId, &item.Title, &item.Rating, &item.Types, &item.Prices, &item.Props, &item.Sizes, &item.Image)
 	if err != nil {
 		return Item{}, err
 	}
-	return i, nil
-}
-func (r *repository) Update(ctx context.Context, id int, updatedItem *Item) (Item, error) {
-	q := `UPDATE items
-			SET title = $1, types = $2, price = $3, rating = $4, image = $5, sizes = $6, props = $7
-			WHERE id = $8
-			RETURNING id, title, types, price, rating, image, sizes, props
-			`
-	var i Item
-	err := r.client.QueryRow(ctx, q, updatedItem.Title, updatedItem.Types, updatedItem.Prices, updatedItem.Rating, updatedItem.Image, updatedItem.Sizes, updatedItem.Props, id).Scan(&i.Id, &i.Title, &i.Types, &i.Prices, &i.Rating, &i.Image, &i.Sizes, &i.Props)
-
-	if err != nil {
-		return Item{}, err
-	}
-	return i, nil
-}
-
-func (r *repository) Delete(ctx context.Context, id int) (Item, error) {
-	q := `DELETE FROM items
-			WHERE id = $1
-			RETURNING id, title, types, price, rating, image, sizes, props
-			`
-	var i Item
-	err := r.client.QueryRow(ctx, q, id).Scan(&i.Id, &i.Title, &i.Types, &i.Prices, &i.Rating, &i.Image, &i.Sizes, &i.Props)
-
-	if err != nil {
-		return Item{}, err
-	}
-	return i, nil
+	return item, nil
 }
 
 func NewRepository(client postgres.Client) Repository {

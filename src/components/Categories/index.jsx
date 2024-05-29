@@ -7,7 +7,7 @@ function Categories() {
   const { filterType } = useSelector((state) => state.filter);
   const dispatch = useDispatch();
 
-  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые'];
+  const categories = ['Все', 'Острые', 'Мясные', 'Вегетарианская', 'Гриль'];
 
   return (
     <div className={style.categories}>

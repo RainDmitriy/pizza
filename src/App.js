@@ -14,10 +14,13 @@ function App() {
 
   const getData = async () => {
     try {
-      await axios.get('http://localhost:8080/item').then((res) => {
+      await axios.get('http://localhost:8080/cart/0').then((res) => {
+        dispatch(updateCartItems(res.data));
+      });
+      await axios.get('http://localhost:8080/item/0').then((res) => {
         dispatch(updateItems(res.data));
       });
-      await dispatch(loadToggle(true));
+      dispatch(loadToggle(true));
     } catch (e) {
       console.log('Не удалось получить пиццы с сервера');
     }
@@ -30,7 +33,7 @@ function App() {
   React.useEffect(() => {
     dispatch(
       updateTotalPrice(
-        cartItems.reduce((sum, item) => sum + item.price[item.selectedSize] * item.quantity, 0),
+        cartItems.reduce((sum, item) => sum + item.Prices[item.SelectedSize] * item.Quantity, 0),
       ),
     );
   }, [cartItems]);

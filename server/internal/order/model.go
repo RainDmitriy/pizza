@@ -5,7 +5,7 @@ import (
 )
 
 type Order struct {
-	Id         int
+	OrderId    int
 	TotalPrice int
-	CartItem   []cartItem.CartItem
+	CartItems  []cartItem.CartItem
 }

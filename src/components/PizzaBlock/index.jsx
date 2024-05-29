@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartItems } from '../../redux/slices/cartSlice';
 
-function PizzaBlock({ Title, Prices, Types, Sizes, Image }) {
+function PizzaBlock({ ItemId, Title, Prices, Types, Sizes, Image }) {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -24,7 +24,7 @@ function PizzaBlock({ Title, Prices, Types, Sizes, Image }) {
       if (inCart.length > 0) {
         dispatch(
           updateCartItems([
-            ...cartItems.filter((item) => item.Id !== inCart[0].Id),
+            ...cartItems.filter((item) => item.CartId !== inCart[0].CartId),
             {
               Title,
               Prices,
@@ -32,18 +32,22 @@ function PizzaBlock({ Title, Prices, Types, Sizes, Image }) {
               SelectedType: selectedType,
               SelectedSize: selectedSize,
               Quantity: inCart[0].Quantity + 1,
-              Id: inCart[0].Id,
+              CartId: inCart[0].CartId,
             },
           ]),
         );
-        axios.put(`http://localhost:5000/cart/${inCart[0].Id}`, {
-          Title,
-          Prices,
-          Image,
-          SelectedType: selectedType,
-          SelectedSize: selectedSize,
-          Quantity: inCart[0].Quantity + 1,
-        });
+        axios
+          .put(`http://localhost:8080/cart/${inCart[0].CartId}`, {
+            CartId: inCart[0].CartId,
+            ItemId,
+            SelectedSize: selectedSize,
+            Quantity: inCart[0].Quantity + 1,
+            SelectedType: selectedType,
+            Title,
+            Prices,
+            Image,
+          })
+          .catch((e) => console.error(e));
       } else {
         dispatch(
           updateCartItems([
@@ -55,17 +59,19 @@ function PizzaBlock({ Title, Prices, Types, Sizes, Image }) {
               SelectedType: selectedType,
               SelectedSize: selectedSize,
               Quantity: 1,
-              Id: cartItems.length > 0 ? cartItems[cartItems.length - 1].Id + 1 : 1,
+              CartId: cartItems.length > 0 ? cartItems[cartItems.length - 1].CartId + 1 : 1,
             },
           ]),
         );
-        axios.post(`http://localhost:5000/cart`, {
+        axios.post(`http://localhost:8080/cart/0`, {
+          CartId: cartItems.length > 0 ? cartItems[cartItems.length - 1].CartId + 1 : 1,
+          ItemId,
+          SelectedSize: selectedSize,
+          Quantity: 1,
+          SelectedType: selectedType,
           Title,
           Prices,
           Image,
-          SelectedType: selectedType,
-          SelectedSize: selectedSize,
-          Quantity: 1,
         });
       }
     } catch (e) {

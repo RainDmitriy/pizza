@@ -1,11 +1,12 @@
 package cartItem
 
 type CartItem struct {
-	Id           int
-	quantity     int
-	selectedSize int
-	selectedType int
-	title        string
-	price        int
-	image        string
+	CartId       int
+	ItemId       int
+	Quantity     int
+	SelectedSize int
+	SelectedType int
+	Title        string
+	Prices       []int
+	Image        []string
 }

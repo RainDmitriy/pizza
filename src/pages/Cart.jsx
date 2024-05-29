@@ -14,7 +14,7 @@ function Cart() {
     try {
       const items = cartItems;
       await items.forEach((item) => {
-        axios.delete(`http://localhost:5000/cart/${item.id}`);
+        axios.delete(`http://localhost:8080/cart/${item.CartId}`);
       });
       dispatch(updateCartItems([]));
     } catch (e) {
@@ -24,7 +24,7 @@ function Cart() {
 
   const createOrder = async () => {
     try {
-      await axios.post('http://localhost:5000/orders', { cartItems, totalPrice });
+      await axios.post('http://localhost:8080/orders/0', { cartItems, totalPrice });
       clearCart();
     } catch (e) {
       console.log('Не удалось создать заказ');
@@ -33,7 +33,7 @@ function Cart() {
 
   const displayCart = (items) => {
     let itemsList = [...items];
-    return itemsList.sort((a, b) => a.Id - b.Id);
+    return itemsList.sort((a, b) => a.CartId - b.CartId);
   };
 
   return (
@@ -117,7 +117,7 @@ function Cart() {
               </div>
               <div className="content__item">
                 {displayCart(cartItems).map((item) => (
-                  <CartItem key={item.Id} id={item.Id} {...item} />
+                  <CartItem key={item.CartId} CartId={item.CartId} {...item} />
                 ))}
               </div>
               <div className="cart__bottom">

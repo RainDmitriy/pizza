@@ -1,7 +1,7 @@
 package item
 
 type Item struct {
-	Id     int
+	ItemId int
 	Title  string
 	Types  []int
 	Prices []int

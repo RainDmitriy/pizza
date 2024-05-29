@@ -6,5 +6,5 @@ import (
 
 type CreateOrderDTO struct {
 	TotalPrice int
-	CartItem   []cartItem.CartItem
+	CartItems  []cartItem.CartItem
 }

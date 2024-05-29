@@ -13,11 +13,11 @@ function Home() {
   const sorted = (pizzas, sortType) => {
     switch (sortType) {
       case 0:
-        return pizzas.toSorted((a, b) => b.rating - a.rating);
+        return pizzas.toSorted((a, b) => b.Rating - a.Rating);
       case 1:
-        return pizzas.toSorted((a, b) => a.price[0] - b.price[0]);
+        return pizzas.toSorted((a, b) => a.Prices[0] - b.Prices[0]);
       case 2:
-        return pizzas.toSorted((a, b) => a.title.localeCompare(b.title));
+        return pizzas.toSorted((a, b) => a.Title.localeCompare(b.Title));
       default:
         return pizzas;
     }
@@ -53,7 +53,7 @@ function Home() {
           <div className="content__items">
             {isLoaded
               ? sorted(filtered(items, filterType), sortType).map((item) => (
-                  <PizzaBlock key={item.Id} {...item} />
+                  <PizzaBlock key={item.ItemId} {...item} />
                 ))
               : [...Array(16)].map((obj) => (
                   <ContentLoader
